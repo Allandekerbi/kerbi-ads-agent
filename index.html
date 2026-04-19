@@ -293,7 +293,8 @@ Réponds UNIQUEMENT avec un tableau JSON valide, sans texte avant ou après, san
       }
 
       const text = data.content[0].text.trim();
-      const creatives = JSON.parse(text);
+      const clean = text.replace(/```json|```/g, '').trim();
+      const creatives = JSON.parse(clean);
 
       renderResults(creatives, gamme.label);
 
