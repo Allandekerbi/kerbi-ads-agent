@@ -7,74 +7,78 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a1a; min-height: 100vh; }
-
     header { background: #fff; border-bottom: 0.5px solid #e0e0e0; padding: 16px 32px; display: flex; align-items: center; gap: 12px; }
-    header h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.3px; }
+    header h1 { font-size: 18px; font-weight: 500; }
     .logo { width: 32px; height: 32px; background: #ff6b2b; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; }
-
-    main { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: grid; gap: 24px; }
-
+    .badge { font-size: 11px; background: #fff3ee; color: #cc4a1a; border-radius: 4px; padding: 2px 8px; font-weight: 500; }
+    main { max-width: 960px; margin: 0 auto; padding: 32px 24px; display: grid; gap: 20px; }
     .card { background: #fff; border: 0.5px solid #e0e0e0; border-radius: 12px; padding: 24px; }
-    .card h2 { font-size: 15px; font-weight: 500; margin-bottom: 16px; color: #1a1a1a; }
-
-    .section-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 500; }
-
+    .card h2 { font-size: 15px; font-weight: 500; margin-bottom: 16px; }
+    .section-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 500; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    input[type="password"], input[type="text"] { width: 100%; border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 10px 12px; font-size: 13px; font-family: inherit; color: #1a1a1a; background: #fff; }
+    input:focus { outline: none; border-color: #ff6b2b; }
+    .api-hint { font-size: 11px; color: #aaa; margin-top: 5px; }
     .gamme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .gamme-btn { border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 12px; cursor: pointer; background: #fff; text-align: left; transition: all 0.15s; }
-    .gamme-btn:hover { border-color: #ff6b2b; background: #fff8f5; }
-    .gamme-btn.selected { border-color: #ff6b2b; background: #fff3ee; }
-    .gamme-btn .gamme-name { font-size: 13px; font-weight: 500; color: #1a1a1a; }
-    .gamme-btn .gamme-desc { font-size: 11px; color: #888; margin-top: 2px; }
-    .gamme-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 8px; }
-
+    .btn-sel { border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 12px; cursor: pointer; background: #fff; text-align: left; transition: all 0.15s; }
+    .btn-sel:hover { border-color: #ff6b2b; background: #fff8f5; }
+    .btn-sel.selected { border-color: #ff6b2b; background: #fff3ee; }
+    .btn-sel .name { font-size: 13px; font-weight: 500; }
+    .btn-sel .desc { font-size: 11px; color: #888; margin-top: 2px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 8px; }
     .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .format-btn { border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 12px; cursor: pointer; background: #fff; text-align: center; transition: all 0.15s; }
-    .format-btn:hover { border-color: #ff6b2b; background: #fff8f5; }
+    .format-btn:hover { border-color: #ff6b2b; }
     .format-btn.selected { border-color: #ff6b2b; background: #fff3ee; }
-    .format-icon { font-size: 20px; margin-bottom: 4px; }
-    .format-name { font-size: 12px; font-weight: 500; }
-    .format-ratio { font-size: 11px; color: #888; }
-
-    .objectif-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .objectif-btn { border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 10px 14px; cursor: pointer; background: #fff; text-align: left; font-size: 13px; transition: all 0.15s; }
-    .objectif-btn:hover { border-color: #ff6b2b; background: #fff8f5; }
-    .objectif-btn.selected { border-color: #ff6b2b; background: #fff3ee; color: #cc4a1a; font-weight: 500; }
-
-    textarea { width: 100%; border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 12px; font-size: 13px; font-family: inherit; resize: vertical; min-height: 100px; color: #1a1a1a; background: #fff; }
+    .obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .obj-btn { border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 10px 14px; cursor: pointer; background: #fff; font-size: 13px; transition: all 0.15s; text-align: left; }
+    .obj-btn:hover { border-color: #ff6b2b; }
+    .obj-btn.selected { border-color: #ff6b2b; background: #fff3ee; color: #cc4a1a; font-weight: 500; }
+    textarea { width: 100%; border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 12px; font-size: 13px; font-family: inherit; resize: vertical; min-height: 90px; color: #1a1a1a; }
     textarea:focus { outline: none; border-color: #ff6b2b; }
-
-    input[type="text"], input[type="password"] { width: 100%; border: 0.5px solid #e0e0e0; border-radius: 8px; padding: 10px 12px; font-size: 13px; font-family: inherit; color: #1a1a1a; background: #fff; }
-    input:focus { outline: none; border-color: #ff6b2b; }
-
-    .nb-input { display: flex; align-items: center; gap: 12px; }
-    .nb-input input[type="range"] { flex: 1; accent-color: #ff6b2b; }
-    .nb-val { font-size: 15px; font-weight: 500; min-width: 32px; color: #ff6b2b; }
-
+    .nb-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+    .nb-row input[type="range"] { flex: 1; accent-color: #ff6b2b; }
+    .nb-val { font-size: 15px; font-weight: 500; color: #ff6b2b; min-width: 28px; }
+    .upload-zone { border: 1.5px dashed #e0e0e0; border-radius: 10px; padding: 24px; text-align: center; cursor: pointer; transition: all 0.15s; position: relative; }
+    .upload-zone:hover { border-color: #ff6b2b; background: #fff8f5; }
+    .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-zone p { font-size: 13px; color: #888; }
+    .upload-zone strong { color: #ff6b2b; }
+    .preview-img { width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px; margin-top: 12px; border: 0.5px solid #e0e0e0; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 0.5px solid #f0f0f0; }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label { font-size: 13px; font-weight: 500; }
+    .toggle-desc { font-size: 11px; color: #888; margin-top: 2px; }
+    .toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; inset: 0; background: #e0e0e0; border-radius: 22px; transition: 0.2s; }
+    .slider:before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+    input:checked + .slider { background: #ff6b2b; }
+    input:checked + .slider:before { transform: translateX(18px); }
     .generate-btn { width: 100%; background: #ff6b2b; color: white; border: none; border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
     .generate-btn:hover { background: #e55a1f; }
     .generate-btn:disabled { background: #ccc; cursor: not-allowed; }
-
-    .results { display: grid; gap: 16px; }
-    .creative-card { background: #fff; border: 0.5px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
-    .creative-header { background: #ff6b2b; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
-    .creative-header span { color: white; font-size: 13px; font-weight: 500; }
-    .creative-body { padding: 16px; }
-    .creative-section { margin-bottom: 14px; }
-    .creative-section:last-child { margin-bottom: 0; }
-    .creative-section-title { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 500; }
-    .creative-section-content { font-size: 14px; color: #1a1a1a; line-height: 1.5; }
-    .hook { font-size: 16px; font-weight: 500; color: #ff6b2b; line-height: 1.4; }
-    .copy-btn { background: #f5f5f3; border: 0.5px solid #e0e0e0; border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; color: #555; }
-    .copy-btn:hover { background: #ebebeb; }
-
-    .loading { text-align: center; padding: 40px; color: #888; font-size: 14px; }
-    .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid #e0e0e0; border-top-color: #ff6b2b; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .api-hint { font-size: 11px; color: #aaa; margin-top: 6px; }
-    .tag { display: inline-block; background: #fff3ee; color: #cc4a1a; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 500; margin-right: 4px; margin-bottom: 4px; }
-    .empty-state { text-align: center; padding: 48px 24px; color: #aaa; font-size: 14px; }
-    .empty-icon { font-size: 32px; margin-bottom: 12px; opacity: 0.4; }
+    .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .creative-card { background: #fff; border: 0.5px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
+    .creative-top { padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+    .creative-top span { color: white; font-size: 12px; font-weight: 500; }
+    .copy-btn { background: rgba(255,255,255,0.2); color: white; border: 0.5px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 3px 8px; font-size: 11px; cursor: pointer; }
+    .creative-body { padding: 14px; }
+    .img-container { background: #f5f5f3; border-radius: 8px; overflow: hidden; margin-bottom: 12px; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .img-container img { width: 100%; height: auto; display: block; border-radius: 8px; }
+    .img-loading { font-size: 12px; color: #aaa; text-align: center; padding: 20px; }
+    .img-spinner { display: block; width: 24px; height: 24px; border: 2px solid #e0e0e0; border-top-color: #ff6b2b; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 8px; }
+    .field { margin-bottom: 10px; }
+    .field-label { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; font-weight: 500; }
+    .field-val { font-size: 13px; color: #1a1a1a; line-height: 1.4; }
+    .hook-val { font-size: 15px; font-weight: 500; color: #ff6b2b; }
+    .tag { display: inline-block; background: #fff3ee; color: #cc4a1a; border-radius: 4px; padding: 1px 7px; font-size: 11px; margin-right: 3px; }
+    .dl-btn { width: 100%; background: #f5f5f3; border: 0.5px solid #e0e0e0; border-radius: 7px; padding: 8px; font-size: 12px; cursor: pointer; margin-top: 8px; color: #555; }
+    .dl-btn:hover { background: #ebebeb; }
+    .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .results-header h3 { font-size: 15px; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -82,292 +86,305 @@
 <header>
   <div class="logo">K</div>
   <h1>Kerbi Ads Agent</h1>
+  <span class="badge">Phase 2 — Briefs + Visuels IA</span>
 </header>
 
 <main>
 
-  <!-- Config API -->
   <div class="card">
-    <h2>Configuration</h2>
-    <div class="section-label">Clé API Claude</div>
-    <input type="password" id="apiKey" placeholder="sk-ant-..." />
-    <p class="api-hint">Ta clé n'est jamais envoyée ailleurs que directement à l'API Anthropic.</p>
-  </div>
-
-  <!-- Gamme -->
-  <div class="card">
-    <h2>Gamme produit</h2>
-    <div class="gamme-grid">
-      <button class="gamme-btn selected" data-gamme="hydra-glow" onclick="selectGamme(this)">
-        <div class="gamme-dot" style="background:#e8475f"></div>
-        <div class="gamme-name">Hydra Glow</div>
-        <div class="gamme-desc">SPF + Soin + Glow · Cible 20-40 ans</div>
-      </button>
-      <button class="gamme-btn" data-gamme="hydratante" onclick="selectGamme(this)">
-        <div class="gamme-dot" style="background:#2eafd4"></div>
-        <div class="gamme-name">Hydratante</div>
-        <div class="gamme-desc">2-en-1 BIO · Peaux sensibles</div>
-      </button>
-      <button class="gamme-btn" data-gamme="minerale" onclick="selectGamme(this)">
-        <div class="gamme-dot" style="background:#f5a623"></div>
-        <div class="gamme-name">Minérale</div>
-        <div class="gamme-desc">Famille · Dès 6 mois</div>
-      </button>
-    </div>
-  </div>
-
-  <!-- Format -->
-  <div class="card">
-    <h2>Format Meta</h2>
-    <div class="format-grid">
-      <button class="format-btn selected" data-format="feed" onclick="selectFormat(this)">
-        <div class="format-icon">▪</div>
-        <div class="format-name">Feed</div>
-        <div class="format-ratio">1:1 · 1080×1080</div>
-      </button>
-      <button class="format-btn" data-format="story" onclick="selectFormat(this)">
-        <div class="format-icon">▬</div>
-        <div class="format-name">Story / Reels</div>
-        <div class="format-ratio">9:16 · 1080×1920</div>
-      </button>
-      <button class="format-btn" data-format="banner" onclick="selectFormat(this)">
-        <div class="format-icon">▭</div>
-        <div class="format-name">Banner</div>
-        <div class="format-ratio">1.91:1 · 1200×628</div>
-      </button>
-    </div>
-  </div>
-
-  <!-- Objectif -->
-  <div class="card">
-    <h2>Objectif de la campagne</h2>
-    <div class="objectif-grid">
-      <button class="objectif-btn selected" data-obj="notoriete" onclick="selectObjectif(this)">Notoriété de marque</button>
-      <button class="objectif-btn" data-obj="conversion" onclick="selectObjectif(this)">Conversion / Achat</button>
-      <button class="objectif-btn" data-obj="trafic" onclick="selectObjectif(this)">Trafic site web</button>
-      <button class="objectif-btn" data-obj="engagement" onclick="selectObjectif(this)">Engagement</button>
-    </div>
-  </div>
-
-  <!-- Contexte / Références -->
-  <div class="card">
-    <h2>Brief créatif</h2>
-    <div class="section-label" style="margin-bottom:8px">Décris le style des concurrents ou colle tes références</div>
-    <textarea id="brief" placeholder="Ex: Les pubs Respire qui cartonnent utilisent un fond blanc épuré, une photo produit centrée en gros plan, une accroche courte en haut (max 5 mots), un sous-titre bénéfice produit, et un CTA simple. Ton minimaliste, proximité, pas trop corporate..."></textarea>
-
-    <div style="margin-top:16px">
-      <div class="section-label">Nombre de creatives à générer</div>
-      <div class="nb-input">
-        <input type="range" min="3" max="20" value="10" id="nbCreatives" oninput="document.getElementById('nbVal').textContent=this.value" />
-        <span class="nb-val" id="nbVal">10</span>
+    <h2>Clés API</h2>
+    <div class="grid2">
+      <div>
+        <div class="section-label">Clé Claude (cerveau)</div>
+        <input type="password" id="claudeKey" placeholder="sk-ant-..." />
+        <p class="api-hint">console.anthropic.com</p>
+      </div>
+      <div>
+        <div class="section-label">Clé Fal.ai (visuels)</div>
+        <input type="password" id="falKey" placeholder="fal-..." />
+        <p class="api-hint">fal.ai → Settings → API Keys</p>
       </div>
     </div>
   </div>
 
-  <!-- Bouton -->
+  <div class="card">
+    <h2>Gamme produit</h2>
+    <div class="gamme-grid">
+      <button class="btn-sel selected" data-gamme="hydra-glow" onclick="sel('gamme',this)">
+        <div class="dot" style="background:#e8475f"></div>
+        <div class="name">Hydra Glow</div>
+        <div class="desc">SPF + Soin + Glow · 20-40 ans</div>
+      </button>
+      <button class="btn-sel" data-gamme="hydratante" onclick="sel('gamme',this)">
+        <div class="dot" style="background:#2eafd4"></div>
+        <div class="name">Hydratante</div>
+        <div class="desc">2-en-1 BIO · Peaux sensibles</div>
+      </button>
+      <button class="btn-sel" data-gamme="minerale" onclick="sel('gamme',this)">
+        <div class="dot" style="background:#f5a623"></div>
+        <div class="name">Minérale</div>
+        <div class="desc">Famille · Dès 6 mois</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Format Meta</h2>
+      <div class="format-grid">
+        <button class="format-btn selected" data-format="feed" onclick="sel('format',this)">
+          <div style="font-size:18px;margin-bottom:4px">▪</div>
+          <div style="font-size:12px;font-weight:500">Feed</div>
+          <div style="font-size:11px;color:#888">1:1</div>
+        </button>
+        <button class="format-btn" data-format="story" onclick="sel('format',this)">
+          <div style="font-size:18px;margin-bottom:4px">▬</div>
+          <div style="font-size:12px;font-weight:500">Story</div>
+          <div style="font-size:11px;color:#888">9:16</div>
+        </button>
+        <button class="format-btn" data-format="banner" onclick="sel('format',this)">
+          <div style="font-size:18px;margin-bottom:4px">▭</div>
+          <div style="font-size:12px;font-weight:500">Banner</div>
+          <div style="font-size:11px;color:#888">1.91:1</div>
+        </button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Objectif</h2>
+      <div class="obj-grid">
+        <button class="obj-btn selected" data-obj="notoriete" onclick="sel('obj',this)">Notoriété</button>
+        <button class="obj-btn" data-obj="conversion" onclick="sel('obj',this)">Conversion</button>
+        <button class="obj-btn" data-obj="trafic" onclick="sel('obj',this)">Trafic</button>
+        <button class="obj-btn" data-obj="engagement" onclick="sel('obj',this)">Engagement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Photo produit (PNG)</h2>
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" accept="image/*" id="productImg" onchange="handleUpload(event)" />
+        <div id="uploadIcon" style="font-size:28px;margin-bottom:8px;opacity:0.4">+</div>
+        <p id="uploadText">Glisse ton PNG produit ici<br><strong>ou clique pour choisir</strong></p>
+      </div>
+      <img id="imgPreview" class="preview-img" style="display:none" />
+    </div>
+    <div class="card">
+      <h2>Brief créatif</h2>
+      <textarea id="brief" placeholder="Décris le style souhaité... Ex: fond blanc épuré, accroche courte en haut, style Respire minimaliste, ton jeune et dynamique..."></textarea>
+      <div class="nb-row">
+        <span style="font-size:12px;color:#888">Nombre</span>
+        <input type="range" min="2" max="10" value="4" id="nbCreatives" step="1" oninput="document.getElementById('nbVal').textContent=this.value" />
+        <span class="nb-val" id="nbVal">4</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Options visuels IA</h2>
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-label">Générer les visuels avec Fal.ai</div>
+        <div class="toggle-desc">Utilise ta photo produit + la direction visuelle pour créer l'image finale</div>
+      </div>
+      <label class="toggle"><input type="checkbox" id="genImages" checked /><span class="slider"></span></label>
+    </div>
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-label">Fond blanc épuré (style clean beauty)</div>
+        <div class="toggle-desc">Force un arrière-plan blanc minimaliste sur tous les visuels</div>
+      </div>
+      <label class="toggle"><input type="checkbox" id="whiteBg" checked /><span class="slider"></span></label>
+    </div>
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-label">Intégrer l'accroche dans le visuel</div>
+        <div class="toggle-desc">Demande à Fal.ai d'inclure le texte de l'accroche dans l'image</div>
+      </div>
+      <label class="toggle"><input type="checkbox" id="includeText" /><span class="slider"></span></label>
+    </div>
+  </div>
+
   <button class="generate-btn" id="generateBtn" onclick="generate()">
-    Générer les briefs créatifs
+    Générer les creatives Kerbi
   </button>
 
-  <!-- Résultats -->
-  <div id="results"></div>
+  <div id="resultsWrap" style="display:none">
+    <div class="results-header">
+      <h3 id="resultsTitle">Creatives générées</h3>
+    </div>
+    <div class="results-grid" id="results"></div>
+  </div>
 
 </main>
 
 <script>
-  let selectedGamme = 'hydra-glow';
-  let selectedFormat = 'feed';
-  let selectedObjectif = 'notoriete';
+  let state = { gamme: 'hydra-glow', format: 'feed', obj: 'notoriete' };
+  let productImgBase64 = null;
 
-  function selectGamme(el) {
-    document.querySelectorAll('.gamme-btn').forEach(b => b.classList.remove('selected'));
+  function sel(type, el) {
+    const map = { gamme: '.btn-sel', format: '.format-btn', obj: '.obj-btn' };
+    document.querySelectorAll(map[type]).forEach(b => b.classList.remove('selected'));
     el.classList.add('selected');
-    selectedGamme = el.dataset.gamme;
+    const key = el.dataset.gamme || el.dataset.format || el.dataset.obj;
+    state[type] = key;
   }
 
-  function selectFormat(el) {
-    document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedFormat = el.dataset.format;
-  }
-
-  function selectObjectif(el) {
-    document.querySelectorAll('.objectif-btn').forEach(b => b.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedObjectif = el.dataset.obj;
+  function handleUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      productImgBase64 = ev.target.result;
+      const preview = document.getElementById('imgPreview');
+      preview.src = productImgBase64;
+      preview.style.display = 'block';
+      document.getElementById('uploadIcon').style.display = 'none';
+      document.getElementById('uploadText').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
   }
 
   const gammeInfo = {
-    'hydra-glow': {
-      label: 'Hydra Glow',
-      desc: 'Gamme phare Kerbi. SPF 50/50+, effet glow avec micropaillettes 100% naturelles, acide hyaluronique + niacinamide. Cible : femmes 20-40 ans, adeptes clean beauty & skinimalisme. Produits : Fluide solaire SPF50 (19,90€), Spray SPF50+ (19,90€), Stick SPF50+ (14,50€), Baume lèvres SPF50+ (11,90€). Technologie exclusive DermaGlow Fusion®. 100/100 Yuka.',
-      tone: 'Fun, glowy, instagrammable, clean & safe, sensoriel'
-    },
-    'hydratante': {
-      label: 'Hydratante',
-      desc: 'Gamme BIO certifiée. Crème de jour SPF50 et SPF30, Sérum hydratant, Lait corps. 100% naturelle, formule minérale douce. Cible : adultes 25-50 ans, peaux sensibles, consommateurs bio made in France. Prix : 23,90€ (crème), 13,90€ (sérum), 12,50€ (lait). Technologie DermoMineral Defense®.',
-      tone: 'Doux, rassurant, naturel, quotidien, simplifie la routine'
-    },
-    'minerale': {
-      label: 'Minérale',
-      desc: 'Gamme famille haute tolérance. Lait solaire SPF50 dès 6 mois (sans parfum) et dès 3 ans (parfum monoï). Stick solaire. 100% filtre minéral, sans perturbateurs endocriniens. Certifié BIO. Prix : 23,90€ (100g), 18,90€ (50g), 28,90€ (150g). Cible : parents, bébés, peaux sensibles.',
-      tone: 'Rassurant, familial, sécurisant, naturel, expert'
-    }
+    'hydra-glow': { label: 'Hydra Glow', color: '#e8475f', desc: 'SPF 50/50+, effet glow micropaillettes 100% naturelles, acide hyaluronique + niacinamide. Cible femmes 20-40 ans, clean beauty & skinimalisme. 100/100 Yuka. DermaGlow Fusion®. Packaging rouge corail.', tone: 'Fun, glowy, instagrammable, sensoriel, clean' },
+    'hydratante': { label: 'Hydratante', color: '#2eafd4', desc: 'BIO certifiée, SPF30/50, 100% naturelle, minérale. Adultes 25-50 ans, peaux sensibles, bio made in France. DermoMineral Defense®. Packaging bleu turquoise.', tone: 'Doux, rassurant, naturel, quotidien' },
+    'minerale': { label: 'Minérale', color: '#f5a623', desc: 'Famille haute tolérance dès 6 mois. 100% filtre minéral, sans perturbateurs endocriniens, BIO. Packaging orange/jaune.', tone: 'Rassurant, familial, sécurisant, naturel' }
   };
 
-  const formatInfo = {
-    'feed': 'Format carré 1:1 (1080×1080px) pour le Feed Instagram/Facebook',
-    'story': 'Format vertical 9:16 (1080×1920px) pour Stories et Reels',
-    'banner': 'Format horizontal 1.91:1 (1200×628px) pour bannières et Facebook Feed desktop'
-  };
-
-  const objectifInfo = {
-    'notoriete': 'Notoriété de marque — faire connaître Kerbi, créer de l\'émotion',
-    'conversion': 'Conversion / Achat — pousser à l\'achat immédiat, CTA fort',
-    'trafic': 'Trafic site web — inciter à cliquer et découvrir',
-    'engagement': 'Engagement — générer des commentaires, partages, interactions'
-  };
+  const formatInfo = { feed: 'Carré 1:1 Feed Instagram/Facebook (1080x1080px)', story: 'Vertical 9:16 Stories et Reels', banner: 'Horizontal 1.91:1 bannières Facebook' };
+  const objInfo = { notoriete: 'Notoriété — faire connaître Kerbi, créer de l\'émotion', conversion: 'Conversion — pousser à l\'achat immédiat, CTA fort', trafic: 'Trafic — inciter à cliquer vers le site', engagement: 'Engagement — commentaires, partages, interactions' };
+  const falSize = { feed: 'square', story: 'portrait_4_3', banner: 'landscape_4_3' };
 
   async function generate() {
-    const apiKey = document.getElementById('apiKey').value.trim();
+    const claudeKey = document.getElementById('claudeKey').value.trim();
+    const falKey = document.getElementById('falKey').value.trim();
     const brief = document.getElementById('brief').value.trim();
     const nb = parseInt(document.getElementById('nbCreatives').value);
+    const genImages = document.getElementById('genImages').checked;
+    const whiteBg = document.getElementById('whiteBg').checked;
+    const includeText = document.getElementById('includeText').checked;
 
-    if (!apiKey) { alert('Entre ta clé API Claude pour commencer.'); return; }
+    if (!claudeKey) { alert('Entre ta clé Claude.'); return; }
+    if (genImages && !falKey) { alert('Entre ta clé Fal.ai ou désactive la génération de visuels.'); return; }
 
     const btn = document.getElementById('generateBtn');
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Génération en cours...';
+    btn.innerHTML = '<span class="spinner"></span> Claude génère les briefs...';
 
-    const resultsEl = document.getElementById('results');
-    resultsEl.innerHTML = '<div class="loading"><span class="spinner"></span> Claude analyse et génère tes briefs créatifs...</div>';
+    const gamme = gammeInfo[state.gamme];
 
-    const gamme = gammeInfo[selectedGamme];
-
-    const prompt = `Tu es un expert en publicité digitale spécialisé dans la beauté et le skincare. Tu travailles pour Kerbi, le 1er Laboratoire Dermo-Solaire naturel à impact, né en Bretagne.
+    const prompt = `Tu es expert en publicité Meta pour la beauté clean. Tu travailles pour Kerbi, 1er Laboratoire Dermo-Solaire naturel à impact, né en Bretagne.
 
 GAMME : ${gamme.label}
-INFOS PRODUIT : ${gamme.desc}
-TON DE LA GAMME : ${gamme.tone}
-FORMAT : ${formatInfo[selectedFormat]}
-OBJECTIF CAMPAGNE : ${objectifInfo[selectedObjectif]}
+PRODUIT : ${gamme.desc}
+TON : ${gamme.tone}
+FORMAT : ${formatInfo[state.format]}
+OBJECTIF : ${objInfo[state.obj]}
+${brief ? `STYLE SOUHAITÉ : ${brief}` : ''}
 
-${brief ? `RÉFÉRENCES / STYLE SOUHAITÉ : ${brief}` : 'Inspire-toi des meilleures publicités de la beauté clean et naturelle.'}
+Génère exactement ${nb} briefs créatifs variés pour Meta Ads.
 
-Génère exactement ${nb} briefs créatifs DIFFÉRENTS et VARIÉS pour des publicités Meta (Facebook/Instagram).
+Réponds UNIQUEMENT avec un tableau JSON valide, sans texte ni markdown autour :
+[{"numero":1,"angle":"3-4 mots","accroche":"max 7 mots","sous_titre":"1-2 phrases","cta":"max 4 mots","visuel_prompt":"detailed english prompt for AI image generation: composition, lighting, mood, style, background, product placement, colors","emotion":"1 mot","hashtags":["#tag1","#tag2","#tag3"]}]`;
 
-Pour chaque creative, fournis un JSON avec exactement ces champs :
-- "numero": numéro de 1 à ${nb}
-- "angle": l'angle créatif en 3-4 mots (ex: "Avant/Après peau", "Démonstration texture", "Témoignage client")
-- "accroche": la phrase d'accroche principale (max 7 mots, percutante, adaptée à l'objectif)
-- "sous_titre": le texte secondaire (1-2 phrases, bénéfice produit ou preuve sociale)
-- "cta": le bouton d'appel à l'action (max 4 mots)
-- "visuel": description précise du visuel à créer (composition, arrière-plan, mise en scène produit, ambiance)
-- "emotion": l'émotion principale que doit ressentir le spectateur
-- "hashtags": 3 hashtags pertinents
+    let creatives = [];
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': claudeKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 3000, messages: [{ role: 'user', content: prompt }] })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message);
+      const clean = data.content[0].text.replace(/```json|```/g, '').trim();
+      creatives = JSON.parse(clean);
+    } catch (err) {
+      alert('Erreur Claude : ' + err.message);
+      btn.disabled = false;
+      btn.innerHTML = 'Générer les creatives Kerbi';
+      return;
+    }
 
-Réponds UNIQUEMENT avec un tableau JSON valide, sans texte avant ou après, sans markdown. Format exact :
-[{"numero":1,"angle":"...","accroche":"...","sous_titre":"...","cta":"...","visuel":"...","emotion":"...","hashtags":["#...","#...","#..."]}]`;
+    renderCards(creatives, gamme);
+
+    if (genImages && falKey) {
+      for (const c of creatives) {
+        generateImage(c, falKey, whiteBg, includeText, gamme);
+      }
+    } else {
+      document.querySelectorAll('.img-container').forEach(el => {
+        el.innerHTML = '<div class="img-loading">Visuel IA désactivé</div>';
+      });
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = 'Générer les creatives Kerbi';
+  }
+
+  function renderCards(creatives, gamme) {
+    const wrap = document.getElementById('resultsWrap');
+    const grid = document.getElementById('results');
+    document.getElementById('resultsTitle').textContent = `${creatives.length} creatives — ${gamme.label}`;
+    wrap.style.display = 'block';
+    grid.innerHTML = creatives.map(c => `
+      <div class="creative-card">
+        <div class="creative-top" style="background:${gamme.color}">
+          <span>#${c.numero} — ${c.angle}</span>
+          <button class="copy-btn" onclick="copyCard(${c.numero})">Copier</button>
+        </div>
+        <div class="creative-body">
+          <div class="img-container" id="img-${c.numero}">
+            <div class="img-loading"><div class="img-spinner"></div>Génération visuel...</div>
+          </div>
+          <div class="field"><div class="field-label">Accroche</div><div class="field-val hook-val">${c.accroche}</div></div>
+          <div class="field"><div class="field-label">Sous-titre</div><div class="field-val">${c.sous_titre}</div></div>
+          <div class="field"><div class="field-label">CTA</div><div class="field-val" style="font-weight:500">→ ${c.cta}</div></div>
+          <div class="field"><div class="field-label">Émotion</div><div class="field-val">${c.emotion}</div></div>
+          <div class="field"><div>${c.hashtags.map(h => `<span class="tag">${h}</span>`).join('')}</div></div>
+        </div>
+      </div>`).join('');
+    window._creatives = creatives;
+    wrap.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  async function generateImage(c, falKey, whiteBg, includeText, gamme) {
+    const imgContainer = document.getElementById(`img-${c.numero}`);
+    let prompt = c.visuel_prompt;
+    if (whiteBg) prompt += ', pure white background, clean studio lighting, minimalist product photography';
+    if (includeText) prompt += `, bold text overlay: "${c.accroche}"`;
+    prompt += `, ${gamme.tone}, premium cosmetics advertising, high quality`;
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 4000,
-          messages: [{ role: 'user', content: prompt }]
-        })
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        resultsEl.innerHTML = `<div class="card" style="border-color:#f09595;color:#a32d2d;padding:20px;">Erreur API : ${data.error.message}</div>`;
-        return;
+      const body = { prompt, image_size: falSize[state.format] || 'square', num_inference_steps: 28, guidance_scale: 3.5, num_images: 1, enable_safety_checker: true };
+      if (productImgBase64) { body.image_url = productImgBase64; body.strength = 0.7; }
+      const endpoint = productImgBase64 ? 'https://fal.run/fal-ai/flux/dev/image-to-image' : 'https://fal.run/fal-ai/flux/dev';
+      const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Key ${falKey}` }, body: JSON.stringify(body) });
+      const data = await res.json();
+      if (data.images && data.images[0]) {
+        const url = data.images[0].url;
+        imgContainer.innerHTML = `<img src="${url}" alt="Creative ${c.numero}" /><button class="dl-btn" onclick="dlImg('${url}',${c.numero})">Télécharger</button>`;
+        const found = window._creatives.find(x => x.numero === c.numero);
+        if (found) found._imgUrl = url;
+      } else {
+        imgContainer.innerHTML = `<div class="img-loading" style="color:#e24b4a">Erreur Fal.ai</div>`;
       }
-
-      const text = data.content[0].text.trim();
-      const clean = text.replace(/```json|```/g, '').trim();
-      const creatives = JSON.parse(clean);
-
-      renderResults(creatives, gamme.label);
-
     } catch (err) {
-      resultsEl.innerHTML = `<div class="card" style="border-color:#f09595;color:#a32d2d;padding:20px;">Erreur : ${err.message}. Vérifie ta clé API.</div>`;
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = 'Générer les briefs créatifs';
+      imgContainer.innerHTML = `<div class="img-loading" style="color:#e24b4a">${err.message}</div>`;
     }
   }
 
-  function renderResults(creatives, gammeLabel) {
-    const resultsEl = document.getElementById('results');
-    const formatLabel = { feed: 'Feed 1:1', story: 'Story 9:16', banner: 'Banner 1.91:1' }[selectedFormat];
-
-    let html = `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <div style="font-size:15px;font-weight:500;">${creatives.length} briefs générés</div>
-      <div style="display:flex;gap:6px;">
-        <span class="tag">${gammeLabel}</span>
-        <span class="tag">${formatLabel}</span>
-      </div>
-    </div>`;
-
-    html += '<div class="results">';
-    creatives.forEach(c => {
-      html += `
-      <div class="creative-card">
-        <div class="creative-header">
-          <span>Creative #${c.numero} — ${c.angle}</span>
-          <button class="copy-btn" style="background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.3);" onclick="copyCreative(${c.numero})">Copier</button>
-        </div>
-        <div class="creative-body" id="creative-${c.numero}">
-          <div class="creative-section">
-            <div class="creative-section-title">Accroche principale</div>
-            <div class="hook">${c.accroche}</div>
-          </div>
-          <div class="creative-section">
-            <div class="creative-section-title">Sous-titre / Corps</div>
-            <div class="creative-section-content">${c.sous_titre}</div>
-          </div>
-          <div class="creative-section">
-            <div class="creative-section-title">CTA</div>
-            <div class="creative-section-content" style="font-weight:500;">→ ${c.cta}</div>
-          </div>
-          <div class="creative-section">
-            <div class="creative-section-title">Direction visuelle</div>
-            <div class="creative-section-content" style="color:#555;font-style:italic;">${c.visuel}</div>
-          </div>
-          <div class="creative-section">
-            <div class="creative-section-title">Émotion cible</div>
-            <div class="creative-section-content">${c.emotion}</div>
-          </div>
-          <div class="creative-section">
-            <div class="creative-section-title">Hashtags</div>
-            <div>${c.hashtags.map(h => `<span class="tag">${h}</span>`).join('')}</div>
-          </div>
-        </div>
-      </div>`;
-    });
-    html += '</div>';
-
-    resultsEl.innerHTML = html;
-    window._creatives = creatives;
+  function dlImg(url, num) {
+    const a = document.createElement('a');
+    a.href = url; a.download = `kerbi-creative-${num}.jpg`; a.target = '_blank'; a.click();
   }
 
-  function copyCreative(num) {
+  function copyCard(num) {
     const c = window._creatives.find(x => x.numero === num);
     if (!c) return;
-    const text = `CREATIVE #${c.numero} — ${c.angle}\n\nACCROCHE: ${c.accroche}\nSOUS-TITRE: ${c.sous_titre}\nCTA: ${c.cta}\nVISUEL: ${c.visuel}\nÉMOTION: ${c.emotion}\nHASHTAGS: ${c.hashtags.join(' ')}`;
-    navigator.clipboard.writeText(text);
-    alert(`Creative #${num} copié !`);
+    const text = `CREATIVE #${c.numero} — ${c.angle}\n\nACCROCHE: ${c.accroche}\nSOUS-TITRE: ${c.sous_titre}\nCTA: ${c.cta}\nVISUEL: ${c.visuel_prompt}\nÉMOTION: ${c.emotion}\nHASHTAGS: ${c.hashtags.join(' ')}`;
+    navigator.clipboard.writeText(text).then(() => alert(`Creative #${num} copié !`));
   }
 </script>
-
 </body>
 </html>
